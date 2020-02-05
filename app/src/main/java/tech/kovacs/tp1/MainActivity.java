@@ -52,12 +52,11 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
 
             SharedPreferences settings = getSharedPreferences(CYCLEVIEPREFS, Context.MODE_PRIVATE);
-            String str = settings.getString("shared_preferences_value", "");
-
-
+            String str = settings.getString("valeur", "");
 
 
             Intent intent = new Intent(v.getContext(), SecondActivity.class);
+            intent.putExtra("texte", str);
             startActivity(intent);
         }
     };

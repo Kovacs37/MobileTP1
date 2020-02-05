@@ -32,9 +32,16 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        SharedPreferences settings = getSharedPreferences(CYCLEVIEPREFS, Context.MODE_PRIVATE);
-        String str = settings.getString("shared_preferences_value", "");
+
+        // QUESTION A
+        //SharedPreferences settings = getSharedPreferences(CYCLEVIEPREFS, Context.MODE_PRIVATE);
+        //String str = settings.getString("shared_preferences_value", "");
         TextView tv1 = (TextView) findViewById(R.id.textView1);
+        // QUESTION B
+        Intent intent = getIntent();
+        String str = "";
+        if (intent != null) str = intent.getStringExtra("texte");
+
         tv1.setText(str);
 
         popUp("onCreate()");
