@@ -40,12 +40,33 @@ public class SecondActivity extends AppCompatActivity {
         // QUESTION B
         Intent intent = getIntent();
         String str = "";
-        if (intent != null) str = intent.getStringExtra("texte");
+        // if (intent != null) str = intent.getStringExtra("texte");
+
+        // QUESTION C
+
+        if (savedInstanceState != null) {
+            popUp("CA MARCHE");
+            str = savedInstanceState.getString("key");
+        }
+
 
         tv1.setText(str);
 
         popUp("onCreate()");
     }
+
+
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        String str = savedInstanceState.getString("key");
+
+        TextView tv1 = (TextView) findViewById(R.id.textView1);
+        tv1.setText(str);
+    }
+
+
+
+
 
     View.OnClickListener btnEnvoyerOnClickListener = new View.OnClickListener() {
         @Override
