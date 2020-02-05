@@ -1,6 +1,7 @@
 package tech.kovacs.tp1;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -13,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SecondActivity extends AppCompatActivity {
@@ -28,15 +30,14 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Button btnQuitter = (Button) findViewById(R.id.btnQuitter);
-        btnQuitter.setOnClickListener(btnQuitterOnClickListener);
-        popUp("onCreate()");
-        Button btnEnvoyer = (Button) findViewById(R.id.btnEnvoyer);
-        btnEnvoyer.setOnClickListener(btnEnvoyerOnClickListener);
+        setContentView(R.layout.activity_second);
 
-        Button btnAct2 = (Button) findViewById(R.id.btnAct2);
-        btnAct2.setOnClickListener(btnAct2OnClickListener);
+        SharedPreferences settings = getSharedPreferences(CYCLEVIEPREFS, Context.MODE_PRIVATE);
+        String str = settings.getString("shared_preferences_value", "");
+        TextView tv1 = (TextView) findViewById(R.id.textView1);
+        tv1.setText(str);
+
+        popUp("onCreate()");
     }
 
     View.OnClickListener btnEnvoyerOnClickListener = new View.OnClickListener() {
@@ -82,16 +83,11 @@ public class SecondActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         SharedPreferences settings = getSharedPreferences(CYCLEVIEPREFS, Context.MODE_PRIVATE);
-        setTxTValeur(settings.getString("valeur", ""));
         popUp("onStart()");
 
 
     }
 
-    public void setTxTValeur(String valeur) {
-        EditText zoneValeur = (EditText) findViewById(R.id.editTxtValeur);
-        zoneValeur.setText(valeur);
-    }
 
     /**
      * ==============================================================

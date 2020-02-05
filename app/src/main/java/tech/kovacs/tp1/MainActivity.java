@@ -17,7 +17,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    private String CYCLEVIEPREFS = "cycle_vie_prefs";
+    public static final String CYCLEVIEPREFS = "cycle_vie_prefs";
 
 
     /**
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Button btnQuitter = (Button) findViewById(R.id.btnQuitter);
         btnQuitter.setOnClickListener(btnQuitterOnClickListener);
         popUp("onCreate()");
@@ -49,6 +50,13 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener btnAct2OnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+
+            SharedPreferences settings = getSharedPreferences(CYCLEVIEPREFS, Context.MODE_PRIVATE);
+            String str = settings.getString("shared_preferences_value", "");
+
+
+
+
             Intent intent = new Intent(v.getContext(), SecondActivity.class);
             startActivity(intent);
         }
