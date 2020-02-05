@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         popUp("onCreate()");
         Button btnEnvoyer = (Button) findViewById(R.id.btnEnvoyer);
         btnEnvoyer.setOnClickListener(btnEnvoyerOnClickListener);
+
+        Button btnAct2 = (Button) findViewById(R.id.btnAct2);
+        btnAct2.setOnClickListener(btnAct2OnClickListener);
     }
 
     View.OnClickListener btnEnvoyerOnClickListener = new View.OnClickListener() {
@@ -41,6 +44,15 @@ public class MainActivity extends AppCompatActivity {
             popUp("valeur saisie = " + getTxtValeur());
         }
     };
+
+    View.OnClickListener btnAct2OnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            
+        }
+    };
+
+
 
     public String getTxtValeur() {
         EditText zoneValeur = (EditText) findViewById(R.id.editTxtValeur);
