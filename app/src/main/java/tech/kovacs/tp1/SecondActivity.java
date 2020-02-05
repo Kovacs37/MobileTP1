@@ -1,7 +1,6 @@
 package tech.kovacs.tp1;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -16,7 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class SecondActivity extends AppCompatActivity {
+
     private String CYCLEVIEPREFS = "cycle_vie_prefs";
 
 
@@ -49,11 +49,9 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener btnAct2OnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(v.getContext(), SecondActivity.class);
-            startActivity(intent);
+
         }
     };
-
 
 
     public String getTxtValeur() {
@@ -174,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     public void popUp(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, message + " act2", Toast.LENGTH_LONG).show();
     }
+
 }
