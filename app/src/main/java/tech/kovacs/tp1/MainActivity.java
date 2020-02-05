@@ -16,6 +16,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    private String CYCLEVIEPREFS = "cycle_vie_prefs";
+
+
     /**
      * Exécuté chaque fois que l'utilisateur clique sur l'icône de l'application pour une première fois.
      * <p>
@@ -66,7 +69,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        SharedPreferences settings = getSharedPreferences(CYCLEVIEPREFS, Context.MODE_PRIVATE);
+        setTxTValeur(settings.getString("valeur", ""));
         popUp("onStart()");
+
+
+    }
+
+    public void setTxTValeur(String valeur) {
+        EditText zoneValeur = (EditText) findViewById(R.id.editTxtValeur);
+        zoneValeur.setText(valeur);
     }
 
     /**
@@ -97,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
 
-        SharedPreferences settings = getSharedPreferences("cycle_vie_prefs", Context.MODE_PRIVATE);
+        SharedPreferences settings = getSharedPreferences(CYCLEVIEPREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("valeur", getTxtValeur());
         editor.commit();
